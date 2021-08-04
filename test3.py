@@ -24,7 +24,7 @@ ws = wb.active
 ##
 headers = {'user-agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'}
 response = requests.get(
-	"https://histock.tw/stock/brokerprofit.aspx?bno=1470&day=60", headers=headers)
+	"https://histock.tw/stock/brokerprofit.aspx?bno=1470", headers=headers)
 
 # //理論上應該要設置為隨機
 # time.sleep(20)
@@ -34,15 +34,13 @@ bsObj = BeautifulSoup(response.text, "html.parser")
 # b是一列的變數
 b=1 
 # a = bsObj.find("table", {"id" : "CPHB1_bt1_g"})
-a = bsObj.find("div", {"class" : "grid-body"})
-print(a)
-# for title in bsObj.find("table", {"id" : "CPHB1_bt1_g"}).find("tr"):
-# for title in bsObj.find("table", {"id" : "CPHB1_bt1_g"}):
-#     # a += title.string;
-#     print(title.string,'p')
-    # #寫入儲存格
-    # ws.cell(column=b, row=1).value = title.string
-    # b+=1
+# print(a)
+for title in bsObj.find("table", {"id" : "CPHB1_bt1_g"}).find("tr"):
+    # a += title.string;
+    print(title.string)
+    #寫入儲存格
+    ws.cell(column=b, row=1).value = title.string
+    b+=1
 # print(a)
 ##
 
