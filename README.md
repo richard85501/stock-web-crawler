@@ -1,4 +1,4 @@
-# stock-web-crawler
+# stock-web-crawler (python)
 
 technology
 
